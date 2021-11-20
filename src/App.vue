@@ -1,36 +1,50 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If ViewUI is successfully added to this project, you'll see an
-        <code v-text="'<Button>'"></code>
-        below
-      </p>
-      <Button type="primary">Button</Button>
+<!--    <navi-top v-if="!atHomePage"/>-->
+    <div class="router-view">
+      <div class="top-blank"></div>
+      <div class="content">
+        <router-view/>
+      </div>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  data () {
+    return {
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  .router-view {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .top-blank {
+      height: 64px;
+      flex-shrink: 0;
+    }
+    .content {
+      flex-shrink: 0;
+      flex-grow: 1;
+      height: 0;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 </style>
