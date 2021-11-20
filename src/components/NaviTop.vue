@@ -46,7 +46,7 @@ export default {
   top: 0;
   left: 0;
   //border-bottom: 2px solid rgba(128, 128, 128, 0.7);
-  background-color: rgba(24, 24, 24, 1);
+  background-color: rgba(25, 25, 25, 1);
   display: flex;
   align-items: center;
   justify-content: center;

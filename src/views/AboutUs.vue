@@ -1,6 +1,7 @@
 <template>
   <div class="aboutUs">
     about us page
+    关于我们页面
   </div>
 </template>
 

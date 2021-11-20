@@ -1,6 +1,7 @@
 <template>
   <div class="exhibition">
     exhibition page
+    作品展示页面
   </div>
 </template>
 
