@@ -1,6 +1,12 @@
 <template>
   <div class="naviTop">
-    <Button to="/" ghost>首页</Button>
+    <div
+      v-for="item in routerParam"
+      :key="item.path"
+      :class="$route.path===item.path?'navi-button-activated':'navi-button-inactivated'"
+      @click="gotoPath(item.path)">
+      {{item.title}}
+    </div>
   </div>
 </template>
 
@@ -8,6 +14,12 @@
 export default {
   data () {
     return {
+      routerParam: [
+        { path: '/home', title: '首页' },
+        { path: '/exhibition', title: '作品展示' },
+        { path: '/aboutUs', title: '关于我们' },
+        { path: '/contactUs', title: '联系我们' }
+      ]
     }
   },
   watch: {
@@ -15,6 +27,11 @@ export default {
   mounted () {
   },
   methods: {
+    gotoPath (routerPath) {
+      if (this.$route.path !== routerPath) {
+        this.$router.push(routerPath)
+      }
+    }
   }
 }
 
@@ -33,6 +50,27 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  .navi-button-inactivated, .navi-button-activated {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin: 0 25px;
+  }
+  .navi-button-inactivated:hover {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(52, 52, 52, 1);
+  }
+  .navi-button-activated {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(52, 52, 52, 1);
+  }
+  .navi-button-inactivated {
+    color: rgba(148, 148, 148, 1);
+  }
 }
 
 </style>
