@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @mousemove="cursorListener" ref="app">
     <navi-top />
     <div class="router-view">
       <div class="top-blank"></div>
@@ -12,6 +12,7 @@
 
 <script>
 import NaviTop from '@/components/NaviTop'
+import bus from '@/assets/eventBus'
 
 export default {
   components: {
@@ -19,6 +20,16 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  methods: {
+    cursorListener (event) {
+      const appEle = this.$refs.app
+      const width = appEle.offsetWidth
+      const height = appEle.offsetHeight
+      const X = event.clientX
+      const Y = event.clientY
+      bus.$emit('cursorOffsetPerc', [2 * X / width - 1, 2 * Y / height - 1])
     }
   }
 }
@@ -42,12 +53,14 @@ export default {
       flex-shrink: 0;
     }
     .content {
+      width: 100%;
       flex-shrink: 0;
       flex-grow: 1;
       height: 0;
       overflow: auto;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
   }
 }

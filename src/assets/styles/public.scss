@@ -36,3 +36,10 @@ input[type="number"]{
 	filter: brightness(20%);
 	transform: scale(1, 0);
 }
+
+.fadeInOut-enter-active, .fadeInOut-leave-active {
+	transition: all 0.4s;
+}
+.fadeInOut-enter, .fadeInOut-leave-to {
+	opacity: 0;
+}
