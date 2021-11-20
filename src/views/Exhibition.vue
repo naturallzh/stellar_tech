@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    home page
+  <div class="exhibition">
+    exhibition page
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Home',
-  path: 'home'
+  name: 'Exhibition',
+  path: 'exhibition'
 }
 </script>
 
 <style scoped lang="scss">
-.home {
+.exhibition {
 }
 </style>

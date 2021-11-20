@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-<!--    <navi-top v-if="!atHomePage"/>-->
+    <navi-top />
     <div class="router-view">
       <div class="top-blank"></div>
       <div class="content">
@@ -11,8 +11,12 @@
 </template>
 
 <script>
+import NaviTop from '@/components/NaviTop'
 
 export default {
+  components: {
+    NaviTop
+  },
   data () {
     return {
     }
