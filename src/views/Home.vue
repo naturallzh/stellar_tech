@@ -33,7 +33,6 @@ export default {
   path: 'home',
   data () {
     return {
-      showBg: true,
       bgArr: [],
       curBgIdx: 0,
       bgScale: 1,
@@ -78,7 +77,6 @@ export default {
       const height = viewEle.offsetHeight
       bgBoxEle.style.width = width * scale + 'px'
       bgBoxEle.style.height = height * scale + 'px'
-      // this.showBg = true
       this.setBgBoxPos(0, 0)
     },
     setBgBoxPos (offsetPercX, offsetPercY) {
