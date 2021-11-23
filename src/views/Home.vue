@@ -117,7 +117,7 @@ export default {
   display: flex;
   align-items: center;
   .bg-box {
-    position: relative;
+    position: absolute;
     .bg {
       position: absolute;
       top: 0;
@@ -144,7 +144,7 @@ export default {
   }
   .bg-switch-left:hover {
     cursor: pointer;
-    animation: pointToLeft 1.2s infinite;
+    animation: pointToLeft 1s infinite ease-in;
     @keyframes pointToLeft {
       from { left: 36px; }
       to { left: 20px; }
@@ -152,7 +152,7 @@ export default {
   }
   .bg-switch-right:hover {
     cursor: pointer;
-    animation: pointToRight 1.2s infinite;
+    animation: pointToRight 1s infinite ease-in;
     @keyframes pointToRight {
       from { right: 36px; }
       to { right: 20px; }
