@@ -1,29 +1,31 @@
 <template>
-  <div class="home" ref="home">
-    <div class="bg-box" ref="bgBox">
-      <transition-group name="fadeInOut">
+  <transition name="fadeInOut">
+    <div class="home" ref="home">
+      <div class="bg-box" ref="bgBox">
+        <transition-group name="fadeInOut">
+          <div
+            v-for="(bgPath, idx) in bgArr"
+            :key="bgPath" class="bg"
+            :ref="'bg0'+idx"
+            v-show="idx===curBgIdx"
+          >
+          </div>
+        </transition-group>
+      </div>
+      <div class="bg-switch-left" @click="switchBg(1, -1)"></div>
+      <div class="bg-switch-right" @click="switchBg(1, 1)"></div>
+      <div class="bg-nodes-box">
         <div
+          :class="idx===curBgIdx?'bg-node-activated':'bg-node-inactivated'"
           v-for="(bgPath, idx) in bgArr"
-          :key="bgPath" class="bg"
-          :ref="'bg0'+idx"
-          v-show="idx===curBgIdx"
+          :key="bgPath"
+          @click="switchBg(2, idx)"
         >
         </div>
-      </transition-group>
-    </div>
-    <div class="bg-switch-left" @click="switchBg(1, -1)"></div>
-    <div class="bg-switch-right" @click="switchBg(1, 1)"></div>
-    <div class="bg-nodes-box">
-      <div
-        :class="idx===curBgIdx?'bg-node-activated':'bg-node-inactivated'"
-        v-for="(bgPath, idx) in bgArr"
-        :key="bgPath"
-        @click="switchBg(2, idx)"
-      >
       </div>
+      <div class="copyright">Copyright XXXXXX</div>
     </div>
-    <div class="copyright">Copyright XXXXXX</div>
-  </div>
+  </transition>
 </template>
 
 <script>

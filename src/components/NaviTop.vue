@@ -63,7 +63,7 @@ export default {
   .navi-button-inactivated:hover {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(52, 52, 52, 1);
-    box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+    box-shadow: 0 0 8px rgba(173, 216, 230, 0.4);
     cursor: pointer;
   }
   .navi-button-activated {

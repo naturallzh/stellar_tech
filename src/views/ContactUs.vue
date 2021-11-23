@@ -30,11 +30,6 @@ export default {
 
 <style scoped lang="scss">
 .contactUs {
-}
-</style>
-
-<style scoped lang="scss">
-.contactUs {
   position: absolute;
 }
 </style>
