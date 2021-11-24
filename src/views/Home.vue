@@ -180,7 +180,7 @@ export default {
       width: 18px;
       height: 18px;
       border: 2px solid rgba(255, 255, 255, 0.3);
-      background-color: #007aff;
+      background-color: rgba(0, 122, 196, 1);
     }
     .bg-node-inactivated:hover {
       //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);

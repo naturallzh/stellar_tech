@@ -23,6 +23,7 @@
           :key="bgPath"
           @click="clickSwitch(idx)"
         >
+          <div class="text">{{textArr[idx].title}}</div>
         </div>
       </div>
     </div>
@@ -198,12 +199,22 @@ export default {
     flex-direction: column;
     height: 100%;
     position: absolute;
-    right: 70px;
+    right: 90px;
     justify-content: center;
     align-items: center;
     .bg-node-inactivated, .bg-node-activated {
       border-radius: 50%;
       margin: 9px 0;
+      position: relative;
+      .text {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        position: absolute;
+        width: 60px;
+        left: 30px;
+        top: -8px;
+      }
     }
     .bg-node-inactivated {
       width: 12px;
@@ -214,7 +225,7 @@ export default {
       width: 18px;
       height: 18px;
       border: 2px solid rgba(255, 255, 255, 0.3);
-      background-color: #007aff;
+      background-color: rgba(0, 122, 196, 1);
     }
     .bg-node-inactivated:hover {
       //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
