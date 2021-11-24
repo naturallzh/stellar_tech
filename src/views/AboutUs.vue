@@ -171,7 +171,7 @@ export default {
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      filter: blur(5px) brightness(60%);
+      filter: blur(5px) brightness(75%);
     }
     .text-box {
       position: absolute;
