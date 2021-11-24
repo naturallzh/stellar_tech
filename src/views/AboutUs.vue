@@ -21,7 +21,7 @@
           :class="idx===curPageIdx?'bg-node-activated':'bg-node-inactivated'"
           v-for="(bgPath, idx) in bgArr"
           :key="bgPath"
-          @click="curPageIdx = idx"
+          @click="clickSwitch(idx)"
         >
         </div>
       </div>
@@ -50,7 +50,7 @@ export default {
     curPageIdx (newVal, oldVal) {
       setTimeout(() => {
         this.activeTextIdx = newVal
-      }, 1100)
+      }, 1200)
       const step = (oldVal - newVal) * 1
       const scoll = setInterval(() => {
         let factor = 1
@@ -64,7 +64,7 @@ export default {
         }
         if (dist < 0.5) {
           factor = dist * 2 / Math.abs(step)
-          if (factor < 0.1) { factor = 0.1 }
+          if (factor < 0.05) { factor = 0.05 }
         }
         for (const i in this.bgArr) {
           const pos = parseFloat(this.$refs[`bg0${i}`][0].style.top)
@@ -127,7 +127,7 @@ export default {
           this.ableToScroll = false
           setTimeout(() => {
             this.ableToScroll = true
-          }, 1000)
+          }, 1300)
           // console.log(this.curPageIdx)
         }, 300)
       }
@@ -137,6 +137,14 @@ export default {
       if (event.deltaY < 0) {
         this.scrollCount--
       }
+    },
+    clickSwitch (idx) {
+      if (!this.ableToScroll) { return }
+      this.ableToScroll = false
+      this.curPageIdx = idx
+      setTimeout(() => {
+        this.ableToScroll = true
+      }, 1300)
     }
   }
 }
