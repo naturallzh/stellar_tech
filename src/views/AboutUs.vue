@@ -169,10 +169,12 @@ export default {
       top: 0;
       width: 100%;
       height: 100%;
+      border: 5px solid rgba(0, 0, 0, 0.6);
+      box-sizing: border-box;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      filter: blur(5px) brightness(75%);
+      filter: blur(5px) brightness(70%);
     }
     .text-box {
       position: absolute;
