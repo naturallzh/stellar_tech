@@ -1,17 +1,17 @@
 <template>
   <transition name="fadeInOut">
     <div class="aboutUs" v-if="isInit" @mousewheel="scrollSwitch" ref="aboutUs">
-      <template v-for="(bg, idx) in bgArr">
+      <template v-for="(item, idx) in contentArr">
         <div
-          :key="bg"
+          :key="item.bg"
           class="pageBg"
           :ref="'bg0' + idx"
         >
-          <div class="bg" :style="'background-image: url(' + bg + ')'"></div>
+          <div class="bg" :style="'background-image: url(' + item.bg + ')'"></div>
           <transition name="fadeInOutDown">
             <div class="text-box" v-show="idx === activeTextIdx">
-              <div class="title">{{textArr[idx].title}}</div>
-              <div class="desc">{{textArr[idx].desc}}</div>
+              <div class="title">{{item.title}}</div>
+              <div class="desc">{{item.desc}}</div>
             </div>
           </transition>
         </div>
@@ -19,11 +19,11 @@
       <div class="bg-nodes-box">
         <div
           :class="idx===curPageIdx?'bg-node-activated':'bg-node-inactivated'"
-          v-for="(bgPath, idx) in bgArr"
-          :key="bgPath"
+          v-for="(item, idx) in contentArr"
+          :key="item.bg"
           @click="clickSwitch(idx)"
         >
-          <div class="text">{{textArr[idx].title}}</div>
+          <div class="text">{{item.title}}</div>
         </div>
       </div>
     </div>
@@ -43,8 +43,7 @@ export default {
       ableToScroll: true,
       curPageIdx: 0,
       activeTextIdx: 0,
-      bgArr: [],
-      textArr: []
+      contentArr: []
     }
   },
   watch: {
@@ -54,10 +53,14 @@ export default {
       }, 1200)
       const step = (oldVal - newVal) * 1
       const scoll = setInterval(() => {
+        if (!this.$refs.aboutUs) {
+          clearInterval(scoll)
+          return
+        }
         let factor = 1
         const dist = Math.abs(parseFloat(this.$refs.bg00[0].style.top) / 100 + newVal)
         if (dist < 0.005) {
-          for (const i in this.bgArr) {
+          for (const i in this.contentArr) {
             this.$refs[`bg0${i}`][0].style.top = (i - newVal) * 100 + '%'
           }
           clearInterval(scoll)
@@ -67,7 +70,7 @@ export default {
           factor = dist * 2 / Math.abs(step)
           if (factor < 0.05) { factor = 0.05 }
         }
-        for (const i in this.bgArr) {
+        for (const i in this.contentArr) {
           const pos = parseFloat(this.$refs[`bg0${i}`][0].style.top)
           this.$refs[`bg0${i}`][0].style.top = (pos + step * factor) + '%'
         }
@@ -79,35 +82,32 @@ export default {
   },
   methods: {
     init () {
-      const bgArr = [
-        'homeBg/homeBg_00.jpg',
-        'homeBg/homeBg_01.jpg',
-        'homeBg/homeBg_02.jpg',
-        'homeBg/homeBg_03.jpg'
-      ]
-      this.bgArr = bgArr
-      const textArr = [
+      const contentArr = [
         {
           title: '标题1',
-          desc: '正文1正文1正文1正文1正文1正文1'
+          desc: '正文1正文1正文1正文1正文1正文1',
+          bg: 'homeBg/homeBg_00.jpg'
         },
         {
           title: '标题2',
-          desc: '正文2正文2正文2正文2正文2正文2'
+          desc: '正文2正文2正文2正文2正文2正文2',
+          bg: 'homeBg/homeBg_01.jpg'
         },
         {
           title: '标题3',
-          desc: '正文3正文3正文3正文3正文3正文3'
+          desc: '正文3正文3正文3正文3正文3正文3',
+          bg: 'homeBg/homeBg_02.jpg'
         },
         {
           title: '标题4',
-          desc: '正文4正文4正文4正文4正文4正文4'
+          desc: '正文4正文4正文4正文4正文4正文4',
+          bg: 'homeBg/homeBg_03.jpg'
         }
       ]
-      this.textArr = textArr
+      this.contentArr = contentArr
       this.isInit = true
       this.$nextTick(() => {
-        for (const i in this.bgArr) {
+        for (const i in this.contentArr) {
           this.$refs[`bg0${i}`][0].style.top = i * 100 + '%'
         }
       })
@@ -117,7 +117,7 @@ export default {
       if (!this.ableToScroll) { return }
       if (!this.scrollTimer) {
         this.scrollTimer = setTimeout(() => {
-          if (this.scrollCount >= 3 && this.curPageIdx < this.bgArr.length - 1) {
+          if (this.scrollCount >= 3 && this.curPageIdx < this.contentArr.length - 1) {
             this.curPageIdx++
           }
           if (this.scrollCount <= -3 && this.curPageIdx > 0) {
