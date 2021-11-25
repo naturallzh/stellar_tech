@@ -49,9 +49,6 @@ export default {
   },
   watch: {
     curPageIdx (newVal, oldVal) {
-      setTimeout(() => {
-        this.activeTextIdx = newVal
-      }, 1200)
       const step = (oldVal - newVal) * 1
       const scoll = setInterval(() => {
         if (!this.$refs.aboutUs) {
@@ -65,6 +62,9 @@ export default {
             this.$refs[`bg0${i}`][0].style.top = (i - newVal) * 100 + '%'
           }
           clearInterval(scoll)
+          setTimeout(() => {
+            this.activeTextIdx = newVal
+          }, 200)
           return
         }
         if (dist < 0.5) {

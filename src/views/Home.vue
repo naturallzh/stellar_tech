@@ -1,6 +1,6 @@
 <template>
   <transition name="fadeInOut">
-    <div class="home" ref="home">
+    <div class="home" ref="home" v-if="isInit">
       <div class="bg-box" ref="bgBox">
         <transition-group name="fadeInOut">
           <div
@@ -35,6 +35,7 @@ export default {
   path: 'home',
   data () {
     return {
+      isInit: false,
       bgArr: [],
       curBgIdx: 0,
       bgScale: 1,
@@ -42,7 +43,8 @@ export default {
     }
   },
   mounted () {
-    this.init()
+    this.isInit = true
+    this.$nextTick(() => { this.init() })
   },
   beforeDestroy () {
     bus.$off('cursorOffsetPerc')
@@ -59,7 +61,7 @@ export default {
         const offsetPercY = Math.sin(val[1] * Math.PI / 2)
         this.setBgBoxPos(offsetPercX, offsetPercY)
       })
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         this.bgArr[i] = 'homeBg_0' + i
       }
       this.$forceUpdate()
@@ -137,11 +139,11 @@ export default {
     height: 140px;
   }
   .bg-switch-left {
-    left: 36px;
+    left: 45px;
     background-image: url("../../public/homeBg/bgSwitchLeft.png");
   }
   .bg-switch-right {
-    right: 36px;
+    right: 45px;
     background-image: url("../../public/homeBg/bgSwitchRight.png");
   }
   .bg-switch-left:hover {
