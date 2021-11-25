@@ -239,6 +239,7 @@ export default {
       .text-inactivated {
         font-size: 24px;
         color: rgba(204, 204, 204, 1);
+        cursor: pointer;
       }
       .text-activated {
         font-size: 28px;
