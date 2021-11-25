@@ -17,14 +17,15 @@
         </div>
       </template>
       <div class="bg-nodes-box">
-        <div
-          :class="idx===curPageIdx?'bg-node-activated':'bg-node-inactivated'"
-          v-for="(item, idx) in contentArr"
-          :key="item.bg"
-          @click="clickSwitch(idx)"
-        >
-          <div class="text">{{item.title}}</div>
-        </div>
+        <template v-for="(item, idx) in contentArr">
+          <div class="node-item-box" :key="item.bg" @click="clickSwitch(idx)">
+            <div class="node-box">
+              <div :class="idx===curPageIdx?'bg-node-activated':'bg-node-inactivated'">
+              </div>
+            </div>
+            <div :class="idx===curPageIdx?'text-activated':'text-inactivated'">{{item.title}}</div>
+          </div>
+        </template>
       </div>
     </div>
   </transition>
@@ -157,7 +158,7 @@ export default {
   height: 100%;
   position: absolute;
   top: 0;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 1);
   overflow: hidden;
   .pageBg {
     position: absolute;
@@ -203,35 +204,48 @@ export default {
     position: absolute;
     right: 90px;
     justify-content: center;
-    align-items: center;
-    .bg-node-inactivated, .bg-node-activated {
-      border-radius: 50%;
-      margin: 9px 0;
-      position: relative;
-      .text {
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        position: absolute;
-        width: 60px;
-        left: 30px;
-        top: -8px;
+    align-items: flex-start;
+    .node-item-box {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .node-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        .bg-node-inactivated, .bg-node-activated {
+          border-radius: 50%;
+          margin: 9px 0;
+          position: relative;
+        }
+        .bg-node-inactivated {
+          width: 12px;
+          height: 12px;
+          background-color: #cccccc;
+        }
+        .bg-node-activated {
+          width: 18px;
+          height: 18px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          background-color: rgba(0, 122, 196, 1);
+        }
+        .bg-node-inactivated:hover {
+          //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+          cursor: pointer;
+        }
       }
-    }
-    .bg-node-inactivated {
-      width: 12px;
-      height: 12px;
-      background-color: #cccccc;
-    }
-    .bg-node-activated {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      background-color: rgba(0, 122, 196, 1);
-    }
-    .bg-node-inactivated:hover {
-      //box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
+      .text-inactivated {
+        font-size: 24px;
+        color: rgba(204, 204, 204, 1);
+      }
+      .text-activated {
+        font-size: 28px;
+        color: rgba(0, 122, 196, 1);
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(196, 196, 196, 0.4);
+      }
     }
   }
 }
