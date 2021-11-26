@@ -142,48 +142,52 @@ export default {
   .tab-box {
     //background-color: red;
     width: 200px;
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     .tab-item-box {
       width: 100%;
-      height: 50px;
+      height: 75px;
       //background-color: lightblue;
       display: flex;
       align-items: center;
       justify-content: flex-end;
       .tab-inactive, .tab-active {
-        background-color: rgb(2, 138, 196);
+        background-color: rgba(2, 138, 196, 0.98);
         color: #ccc;
       }
       .tab-inactive {
-        opacity: 0.8;
-        font-size: 16px;
+        //opacity: 0.8;
+        filter: brightness(70%);
+        font-size: 25px;
         padding: 3px 5px 3px 15px;
-        //border-radius: 6px 0 0 6px;
+        border-radius: 22px 0 0 22px;
         transition: all 0.2s;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        //clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
       .tab-inactive:hover {
         opacity: 1;
-        font-size: 20px;
+        font-size: 30px;
+        border-radius: 30px 0 0 30px;
         padding: 5px 7px 5px 20px;
         transition: all 0.2s;
         cursor: pointer;
       }
       .tab-active {
-        font-size: 20px;
-        padding: 5px 7px 5px 42px;
-        //border-radius: 10px 0 0 10px;
+        filter: brightness(120%);
+        font-size: 30px;
+        padding: 5px 7px 5px 38px;
+        border-radius: 30px 0 0 30px;
         transition: all 0.2s;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+        box-shadow: 0 5px 10px rgba(196, 196, 196, 0.4);
+        //clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
       }
     }
   }
   .border {
     width: 3px;
-    height: 400px;
+    height: 500px;
     background-image: linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 122, 196, 1), rgba(0, 122, 196, 1), rgba(0, 122, 196, 1), rgba(196, 196, 196, 0));
   }
   .content-box {
