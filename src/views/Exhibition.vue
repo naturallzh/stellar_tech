@@ -22,19 +22,22 @@
       <transition name="fadeInOut">
         <div class="class-detail-box" v-show="curClassIdx !== -1">
           <div class="upper-box">
-            <div class="display-box" v-if="curClassIdx !== -1">
-              <template v-for="(item, idx) in dataArr[curClassIdx].children">
-                <div class="item-box" :key="item+idx" @click="displayPic(idx)">
-                  <div
-                    class="pic-box"
-                    :style="'background-image: url(exhibition/' + dataArr[curClassIdx].children[idx] + ')'"
-                  ></div>
-                  <div class="name-box">{{item}}</div>
-                </div>
-              </template>
-              <div class="item-box" style="opacity: 0" v-show="dataArr[curClassIdx].children.length%3>0"></div>
-              <div class="item-box" style="opacity: 0" v-show="dataArr[curClassIdx].children.length%3===1"></div>
-            </div>
+            <transition name="fadeInOut">
+              <div class="display-box" v-if="curClassIdx !== -1" v-show="switchClass">
+                <template v-for="(item, idx) in dataArr[curClassIdx].children">
+                  <div class="item-box" :key="item+idx" @click="displayPic(idx)">
+                    <div
+                      class="pic-box"
+                      :style="'background-image: url(exhibition/' + dataArr[curClassIdx].children[idx] + ')'"
+                    ></div>
+                    <div class="name-box">{{item}}</div>
+                    <div class="glass-effect"></div>
+                  </div>
+                </template>
+                <div class="item-box" style="opacity: 0" v-show="dataArr[curClassIdx].children.length%3>0"></div>
+                <div class="item-box" style="opacity: 0" v-show="dataArr[curClassIdx].children.length%3===1"></div>
+              </div>
+            </transition>
           </div>
           <div class="bottom-box">
             <div class="tab-box">
@@ -65,7 +68,8 @@ export default {
       showCover: false,
       dataArr: [],
       coverStyleArr: [],
-      curClassIdx: -1
+      curClassIdx: -1,
+      switchClass: 1
     }
   },
   mounted () {
@@ -139,7 +143,11 @@ export default {
     },
     switchClassTab (idx) {
       if (idx === this.curClassIdx) { return }
-      this.curClassIdx = idx
+      this.switchClass = 0
+      setTimeout(() => {
+        this.curClassIdx = idx
+        this.switchClass = 1
+      }, 300)
     },
     displayPic (idx) {},
     backToCover () {
@@ -247,6 +255,9 @@ export default {
     top: 0;
     display: flex;
     flex-direction: column;
+    .upper-box::-webkit-scrollbar {
+      display: none;
+    }
     .upper-box {
       position: relative;
       flex-grow: 1;
@@ -258,7 +269,7 @@ export default {
       align-items: center;
       overflow: auto;
       .display-box {
-        padding: 50px;
+        padding: 70px 30px 50px 30px;
         position: absolute;
         top: 0;
         min-height: 100%;
@@ -268,13 +279,15 @@ export default {
         justify-content: space-evenly;
         flex-wrap: wrap;
         .item-box {
+          position: relative;
           margin: 20px 0;
           width: 240px;
-          height: 180px;
+          height: 170px;
           display: flex;
           flex-direction: column;
           border-radius: 10px;
           background-color: rgba(196, 196, 196, 0.3);
+          transition: all 0.3s;
           .pic-box {
             width: 240px;
             height: 135px;
@@ -291,12 +304,31 @@ export default {
             font-size: 20px;
             font-weight: bold;
           }
+          .glass-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.4) 15%, rgba(255, 255, 255, 0) 25%);
+            clip-path: polygon(0 0, 0 0, 0 0);
+            transition: all 0.3s;
+          }
+        }
+        .item-box:hover {
+          filter: brightness(110%);
+          transition: all 0.3s;
+          cursor: pointer;
+          box-shadow: 10px 10px 15px black;
+        }
+        .item-box:hover .glass-effect {
+          clip-path: polygon(0 0, 50% 0, 0 50%);
+          transition: all 0.3s;
         }
       }
     }
     .bottom-box {
       flex-shrink: 0;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -305,22 +337,24 @@ export default {
         width: 1000px;
         display: flex;
         justify-content: space-evenly;
+        height: 50px;
         .bottom-tab-activated, .bottom-tab-inactivated {
           width: 150px;
-          height: 50px;
           box-sizing: border-box;
           border-radius: 0 0 25px 25px;
           display: flex;
           justify-content: center;
           align-items: center;
           color: white;
-          transition: all 0.4s;
+          transition: all 0.3s;
           font-size: 25px;
         }
         .bottom-tab-activated {
+          height: 50px;
           background-color: rgba(128, 128, 128, 0.2);
         }
         .bottom-tab-inactivated {
+          height: 40px;
           background-color: rgba(0, 0, 0, 0.5);
         }
         .bottom-tab-inactivated:hover {
