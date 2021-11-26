@@ -42,6 +42,7 @@ export default {
   width: 100%;
   height: 64px;
   position: fixed;
+  min-width: 1000px;
   z-index: 900;
   top: 0;
   left: 0;
@@ -69,6 +70,7 @@ export default {
   .navi-button-activated {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(52, 52, 52, 1);
+    filter: brightness(120%);
   }
   .navi-button-inactivated {
     color: rgba(148, 148, 148, 1);
