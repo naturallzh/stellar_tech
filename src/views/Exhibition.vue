@@ -20,10 +20,10 @@
         </template>
       </div>
       <transition name="fadeInOut">
-        <div class="class-detail-box" v-show="curClassIdx !== -1">
+        <div class="class-detail-box" v-if="curClassIdx !== -1">
           <div class="upper-box">
             <transition name="fadeInOut">
-              <div class="display-box" v-if="curClassIdx !== -1" v-show="switchClass">
+              <div class="display-box" v-show="switchClass">
                 <template v-for="(item, idx) in dataArr[curClassIdx].children">
                   <div class="item-box" :key="item+idx" @click="displayPic(idx)">
                     <div
