@@ -53,6 +53,11 @@
           </div>
         </div>
       </transition>
+      <transition name="fadeInOut">
+        <div class="pic-view-box" @click="showPic=false" v-show="showPic">
+          <div class="pic-view" @click.stop ref="picView"></div>
+        </div>
+      </transition>
     </div>
   </transition>
 </template>
@@ -69,7 +74,8 @@ export default {
       dataArr: [],
       coverStyleArr: [],
       curClassIdx: -1,
-      switchClass: 1
+      switchClass: 1,
+      showPic: false
     }
   },
   mounted () {
@@ -149,7 +155,10 @@ export default {
         this.switchClass = 1
       }, 300)
     },
-    displayPic (idx) {},
+    displayPic (idx) {
+      this.showPic = true
+      this.$refs.picView.style.backgroundImage = 'url(exhibition/' + this.dataArr[this.curClassIdx].children[idx] + ')'
+    },
     backToCover () {
       this.curClassIdx = -1
       setTimeout(() => {
@@ -373,6 +382,24 @@ export default {
         background-position: center center;
         background-repeat: no-repeat;
       }
+    }
+  }
+  .pic-view-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pic-view {
+      width: 960px;
+      height: 540px;
+      border: 3px solid silver;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
   }
 }
