@@ -131,6 +131,7 @@ export default {
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
+      //-webkit-mask:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     }
   }
   .bg-switch-left, .bg-switch-right {
