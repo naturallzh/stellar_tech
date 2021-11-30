@@ -350,19 +350,20 @@ export default {
         .bottom-tab-activated, .bottom-tab-inactivated {
           width: 150px;
           box-sizing: border-box;
-          border-radius: 0 0 25px 25px;
+          clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-start;
           color: white;
-          transition: all 0.3s;
-          font-size: 25px;
+          transition: all 0.2s;
         }
         .bottom-tab-activated {
+          font-size: 25px;
           height: 50px;
           background-color: rgba(128, 128, 128, 0.2);
         }
         .bottom-tab-inactivated {
+          font-size: 22px;
           height: 40px;
           background-color: rgba(0, 0, 0, 0.5);
         }
