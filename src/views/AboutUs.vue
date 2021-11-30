@@ -8,12 +8,12 @@
           :ref="'bg0' + idx"
         >
           <div class="bg" :style="'background-image: url(' + item.bg + ')'"></div>
-          <transition name="fadeInOutDown">
-            <div class="text-box" v-show="idx === activeTextIdx">
-              <div class="title">{{item.title}}</div>
-              <div class="desc">{{item.desc}}</div>
-            </div>
-          </transition>
+          <transition-group name="fadeInOutDown">
+            <about-us-cat key="0" v-show="activeTextIdx === idx && idx === 0"></about-us-cat>
+            <about-us-cat key="1" v-show="activeTextIdx === idx && idx === 1"></about-us-cat>
+            <about-us-cat key="2" v-show="activeTextIdx === idx && idx === 2"></about-us-cat>
+            <about-us-cat key="3" v-show="activeTextIdx === idx && idx === 3"></about-us-cat>
+          </transition-group>
         </div>
       </template>
       <div class="bg-nodes-box">
@@ -32,8 +32,11 @@
 </template>
 
 <script>
-
+import AboutUsCat from '@/components/AboutUsCat'
 export default {
+  components: {
+    AboutUsCat
+  },
   name: 'AboutUs',
   path: 'aboutUs',
   data () {
@@ -86,22 +89,18 @@ export default {
       const contentArr = [
         {
           title: '标题1',
-          desc: '正文1正文1正文1正文1正文1正文1',
           bg: 'homeBg/homeBg_00.jpg'
         },
         {
           title: '标题2',
-          desc: '正文2正文2正文2正文2正文2正文2',
           bg: 'homeBg/homeBg_01.jpg'
         },
         {
-          title: '标题3',
-          desc: '正文3正文3正文3正文3正文3正文3',
+          title: '另一些"同事"',
           bg: 'homeBg/homeBg_02.jpg'
         },
         {
           title: '标题4',
-          desc: '正文4正文4正文4正文4正文4正文4',
           bg: 'homeBg/homeBg_03.jpg'
         }
       ]
@@ -177,32 +176,14 @@ export default {
       background-repeat: no-repeat;
       filter: blur(5px) brightness(70%);
     }
-    .text-box {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      color: white;
-      justify-content: center;
-      align-items: center;
-      .title {
-        font-size: 50px;
-        line-height: 75px;
-        max-width: 60%;
-      }
-      .desc {
-        font-size: 25px;
-        max-width: 60%;
-      }
-    }
   }
   .bg-nodes-box {
     display: flex;
     flex-direction: column;
     height: 100%;
     position: absolute;
-    right: 90px;
+    right: 50px;
+    width: 210px;
     justify-content: center;
     align-items: flex-start;
     .node-item-box {
