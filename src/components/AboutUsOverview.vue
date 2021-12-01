@@ -1,7 +1,7 @@
 <template>
   <transition name="fadeInOutDown">
-    <div class="aboutUsCat" v-if="isInit">
-      123
+    <div class="aboutUsOverview" v-if="isInit">
+      321
     </div>
   </transition>
 </template>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.aboutUsCat {
+.aboutUsOverview {
   width: 100%;
   height: 100%;
   position: absolute;

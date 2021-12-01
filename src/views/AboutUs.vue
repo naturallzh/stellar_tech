@@ -8,12 +8,10 @@
           :ref="'bg0' + idx"
         >
           <div class="bg" :style="'background-image: url(' + item.bg + ')'"></div>
-          <transition-group name="fadeInOutDown">
-            <about-us-cat key="0" v-show="activeTextIdx === idx && idx === 0"></about-us-cat>
-            <about-us-cat key="1" v-show="activeTextIdx === idx && idx === 1"></about-us-cat>
-            <about-us-cat key="2" v-show="activeTextIdx === idx && idx === 2"></about-us-cat>
-            <about-us-cat key="3" v-show="activeTextIdx === idx && idx === 3"></about-us-cat>
-          </transition-group>
+          <about-us-cat key="0" v-if="activeTextIdx === idx && idx === 0"></about-us-cat>
+          <about-us-overview key="1" v-if="activeTextIdx === idx && idx === 1"></about-us-overview>
+          <about-us-cat key="2" v-if="activeTextIdx === idx && idx === 2"></about-us-cat>
+          <about-us-overview key="3" v-if="activeTextIdx === idx && idx === 3"></about-us-overview>
         </div>
       </template>
       <div class="bg-nodes-box">
@@ -33,9 +31,11 @@
 
 <script>
 import AboutUsCat from '@/components/AboutUsCat'
+import AboutUsOverview from '@/components/AboutUsOverview'
 export default {
   components: {
-    AboutUsCat
+    AboutUsCat,
+    AboutUsOverview
   },
   name: 'AboutUs',
   path: 'aboutUs',
