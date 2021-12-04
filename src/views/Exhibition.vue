@@ -218,6 +218,7 @@ export default {
     align-items: center;
     justify-content: center;
     .class-cover, .class-cover-hover, .class-cover-hover-else {
+      cursor: pointer;
       position: relative;
       flex-shrink: 0;
       width: 160px;
