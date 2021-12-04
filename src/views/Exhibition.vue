@@ -318,7 +318,7 @@ export default {
               font-weight: bold;
               width: 100%;
               background-color: rgba(196, 196, 196, 0.8);
-              box-shadow: 0 -3px 3px rgba(32, 32, 32, 0.4);
+              box-shadow: 0 -4px 5px rgba(32, 32, 32, 0.5);
             }
           }
           .glass-effect {

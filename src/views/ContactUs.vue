@@ -13,6 +13,10 @@
       <div class="content-box">
         <transition name="fadeInOut">
           <div class="map" v-show="curTabIdx === 0" key="0" id="map">
+<!--            <div class="text">武汉市江岸区温馨路31号幸福时代四期（A-4地块）B幢/单元12层7号</div>-->
+            <div class="text">地址：武汉市江岸区XXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+            <div class="text">地铁3号线、21号线至后湖大道站</div>
+            <div class="text">公交508、516、620、716、265至后湖大道后湖大道百步亭花园路</div>
             <template>
               <baidu-map class="baiduMap" :ak="baiduMapParam.ak" :center="baiduMapParam.center" :zoom="baiduMapParam.zoom" @ready="setBaiduMap"></baidu-map>
             </template>
@@ -194,14 +198,19 @@ export default {
     .map {
       width: 100%;
       height: 70%;
+      display: flex;
+      flex-direction: column;
+      .text {
+        margin-bottom: 9px;
+        font-size: 19px;
+        color: white;
+      }
       .baiduMap {
         width: 100%;
-        height: 100%;
+        flex-grow: 1;
       }
     }
-    .text {
-      position: absolute;
-      color: white;
+    .content {
     }
   }
 }

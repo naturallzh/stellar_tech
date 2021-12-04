@@ -218,7 +218,7 @@ export default {
         font-size: 28px;
         color: rgba(0, 122, 196, 1);
         font-weight: bold;
-        text-shadow: 2px 2px 5px rgba(196, 196, 196, 0.4);
+        //text-shadow: 2px 2px 5px rgba(196, 196, 196, 0.4);
       }
     }
   }
