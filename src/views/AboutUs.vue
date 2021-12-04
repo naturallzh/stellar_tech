@@ -8,10 +8,10 @@
           :ref="'bg0' + idx"
         >
           <div class="bg" :style="'background-image: url(' + item.bg + ')'"></div>
-          <about-us-cat key="0" v-if="activeTextIdx === idx && idx === 0"></about-us-cat>
-          <about-us-overview key="1" v-if="activeTextIdx === idx && idx === 1"></about-us-overview>
+          <about-us-overview key="0" v-if="activeTextIdx === idx && idx === 0"></about-us-overview>
+          <about-us-cat key="1" v-if="activeTextIdx === idx && idx === 1"></about-us-cat>
           <about-us-cat key="2" v-if="activeTextIdx === idx && idx === 2"></about-us-cat>
-          <about-us-overview key="3" v-if="activeTextIdx === idx && idx === 3"></about-us-overview>
+          <about-us-cat key="3" v-if="activeTextIdx === idx && idx === 3"></about-us-cat>
         </div>
       </template>
       <div class="bg-nodes-box">
@@ -88,20 +88,12 @@ export default {
     init () {
       const contentArr = [
         {
-          title: '标题1',
-          bg: 'homeBg/homeBg_00.jpg'
-        },
-        {
-          title: '标题2',
-          bg: 'homeBg/homeBg_01.jpg'
+          title: '公司概况',
+          bg: 'aboutUs/aboutUsOverviewBg.jpg'
         },
         {
           title: '另一些"同事"',
-          bg: 'homeBg/homeBg_02.jpg'
-        },
-        {
-          title: '标题4',
-          bg: 'homeBg/homeBg_03.jpg'
+          bg: 'aboutUs/aboutUsCatBg.jpg'
         }
       ]
       this.contentArr = contentArr
@@ -174,7 +166,7 @@ export default {
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      filter: blur(5px) brightness(70%);
+      filter: blur(3px) brightness(90%);
     }
   }
   .bg-nodes-box {

@@ -1,5 +1,12 @@
 <template>
   <div class="naviTop">
+    <div class="left-box" @click="gotoPath('/home')">
+      <div class="logo"></div>
+      <div class="title-box">
+        <div class="title-1">星碑科技</div>
+        <div class="title-2">Stellar Tech</div>
+      </div>
+    </div>
     <div
       v-for="item in routerParam"
       :key="item.path"
@@ -75,6 +82,34 @@ export default {
   .navi-button-inactivated {
     color: rgba(148, 148, 148, 1);
     transition: background-color 0.3s, color 0.3s;
+  }
+  .left-box {
+    position: absolute;
+    left: 36px;
+    display: flex;
+    height: 40px;
+    cursor: pointer;
+    //background-color: red;
+    .logo {
+      height: 40px;
+      width: 40px;
+      background-image: url("~@/../public/logo/logo-white.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .title-box {
+      height: 100%;
+      color: white;
+      .title-1 {
+        font-weight: bold;
+        font-size: 19px;
+      }
+      .title-2 {
+        font-weight: bold;
+        font-size: 13px;
+      }
+    }
   }
 }
 

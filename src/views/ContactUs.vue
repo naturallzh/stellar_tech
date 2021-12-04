@@ -15,23 +15,19 @@
           <div class="map" v-show="curTabIdx === 0" key="0" id="map">
             <template>
               <baidu-map class="baiduMap" :ak="baiduMapParam.ak" :center="baiduMapParam.center" :zoom="baiduMapParam.zoom" @ready="setBaiduMap"></baidu-map>
-<!--              <baidu-map :ak="baiduMapParam.ak" class="baiduMap" :center="center" :zoom="zoom" @ready="handler"></baidu-map>-->
             </template>
           </div>
         </transition>
         <transition name="fadeInOut">
           <div class="text" v-show="curTabIdx === 1" key="1">
-            {{contentArr[1].content}}
           </div>
         </transition>
         <transition name="fadeInOut">
           <div class="text" v-show="curTabIdx === 2" key="2">
-            {{contentArr[2].content}}
           </div>
         </transition>
         <transition name="fadeInOut">
           <div class="text" v-show="curTabIdx === 3" key="3">
-            {{contentArr[3].content}}
           </div>
         </transition>
       </div>
@@ -63,20 +59,17 @@ export default {
       this.isInit = true
       this.contentArr = [
         {
-          tabTitle: '标签1',
+          tabTitle: '公司地址',
           content: '内容1内容1内容1内容1内容1'
         },
         {
-          tabTitle: '标签2',
-          content: '内容2内容2内容2内容2内容2'
+          tabTitle: '人事联络'
         },
         {
-          tabTitle: '标签3',
-          content: '内容3内容3内容3内容3内容3'
+          tabTitle: '标签3'
         },
         {
-          tabTitle: '标签4',
-          content: '内容4内容4内容4内容4内容4'
+          tabTitle: '标签4'
         }
       ]
       this.baiduMapParam = {

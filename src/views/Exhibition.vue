@@ -29,8 +29,9 @@
                     <div
                       class="pic-box"
                       :style="'background-image: url(exhibition/' + dataArr[curClassIdx].children[idx] + ')'"
-                    ></div>
-                    <div class="name-box">{{item}}</div>
+                    >
+                      <div class="name-box">{{item}}</div>
+                    </div>
                     <div class="glass-effect"></div>
                   </div>
                 </template>
@@ -87,7 +88,7 @@ export default {
       setTimeout(() => { this.showCover = true }, 400)
       this.dataArr = [
         {
-          name: '分类1',
+          name: '角色原画',
           cover: 'cover1.jpg',
           icon: '1',
           children: [
@@ -95,7 +96,7 @@ export default {
           ]
         },
         {
-          name: '分类2',
+          name: '场景原画',
           cover: 'cover2.jpg',
           icon: '2',
           children: [
@@ -103,7 +104,7 @@ export default {
           ]
         },
         {
-          name: '分类3',
+          name: '3D角色',
           cover: 'cover3.jpg',
           icon: '3',
           children: [
@@ -111,7 +112,7 @@ export default {
           ]
         },
         {
-          name: '分类4',
+          name: '3D场景',
           cover: 'cover4.jpg',
           icon: '4',
           children: [
@@ -119,7 +120,7 @@ export default {
           ]
         },
         {
-          name: '分类5',
+          name: '2D动作',
           cover: 'cover5.jpg',
           icon: '5',
           children: [
@@ -127,7 +128,7 @@ export default {
           ]
         },
         {
-          name: '分类6',
+          name: '3D动作',
           cover: 'cover6.jpg',
           icon: '6',
           children: [
@@ -290,28 +291,35 @@ export default {
         .item-box {
           position: relative;
           margin: 20px 0;
-          width: 240px;
-          height: 170px;
+          width: 220px;
+          height: 150px;
           display: flex;
           flex-direction: column;
           border-radius: 10px;
-          background-color: rgba(196, 196, 196, 0.3);
           transition: all 0.3s;
           .pic-box {
-            width: 240px;
-            height: 135px;
-            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-          }
-          .name-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            font-size: 20px;
-            font-weight: bold;
+            position: relative;
+            .name-box {
+              border-radius: 0 0 10px 10px;
+              position: absolute;
+              bottom: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-grow: 1;
+              font-size: 20px;
+              line-height: 35px;
+              font-weight: bold;
+              width: 100%;
+              background-color: rgba(196, 196, 196, 0.8);
+              box-shadow: 0 -3px 3px rgba(32, 32, 32, 0.4);
+            }
           }
           .glass-effect {
             position: absolute;
@@ -337,7 +345,6 @@ export default {
     }
     .bottom-box {
       flex-shrink: 0;
-      padding-bottom: 20px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -346,7 +353,7 @@ export default {
         width: 1000px;
         display: flex;
         justify-content: space-evenly;
-        height: 50px;
+        height: 70px;
         .bottom-tab-activated, .bottom-tab-inactivated {
           width: 150px;
           box-sizing: border-box;
