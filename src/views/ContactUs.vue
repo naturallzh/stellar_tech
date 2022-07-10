@@ -14,9 +14,9 @@
         <transition name="fadeInOut">
           <div class="map" v-show="curTabIdx === 0" key="0" id="map">
 <!--            <div class="text">武汉市江岸区温馨路31号幸福时代四期（A-4地块）B幢/单元12层7号</div>-->
-            <div class="text">地址：武汉市江岸区XXXXXXXXXXXXXXXXXXXXXXXXXX</div>
-            <div class="text">地铁3号线、21号线至后湖大道站</div>
-            <div class="text">公交508、516、620、716、265至后湖大道后湖大道百步亭花园路</div>
+            <div class="text">地址：湖北省武汉市江夏区九峰三路207号</div>
+            <div class="text">地铁11号线至光谷七路站</div>
+            <div class="text">公交301、753路至高新大道光谷七路站</div>
             <template>
               <baidu-map class="baiduMap" :ak="baiduMapParam.ak" :center="baiduMapParam.center" :zoom="baiduMapParam.zoom" @ready="setBaiduMap"></baidu-map>
             </template>
@@ -85,10 +85,12 @@ export default {
     setBaiduMap ({ BMap, map }) {
       // https://dafrok.github.io/vue-baidu-map/#/zh/index
       // console.log(BMap)
-      this.baiduMapParam.center.lng = 114.31789
-      this.baiduMapParam.center.lat = 30.66161
-      this.baiduMapParam.zoom = 18
-      const point = new BMap.Point(114.31789, 30.66161)
+      const lng = 114.541937
+      const lat = 30.497705
+      this.baiduMapParam.center.lng = lng
+      this.baiduMapParam.center.lat = lat
+      this.baiduMapParam.zoom = 16
+      const point = new BMap.Point(lng, lat)
       // map.centerAndZoom(point, 18)
       const marker = new BMap.Marker(point) // 创建标注
       map.addOverlay(marker) // 将标注添加到地图中

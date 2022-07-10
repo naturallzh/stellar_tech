@@ -9,9 +9,9 @@
         >
           <div class="bg" :style="'background-image: url(' + item.bg + ')'"></div>
           <about-us-overview key="0" v-if="activeTextIdx === idx && idx === 0"></about-us-overview>
-          <about-us-cat key="1" v-if="activeTextIdx === idx && idx === 1"></about-us-cat>
-          <about-us-cat key="2" v-if="activeTextIdx === idx && idx === 2"></about-us-cat>
-          <about-us-cat key="3" v-if="activeTextIdx === idx && idx === 3"></about-us-cat>
+          <about-us-event key="1" v-if="activeTextIdx === idx && idx === 1"></about-us-event>
+          <about-us-gym key="2" v-if="activeTextIdx === idx && idx === 2"></about-us-gym>
+          <about-us-snack key="3" v-if="activeTextIdx === idx && idx === 3"></about-us-snack>
         </div>
       </template>
       <div class="bg-nodes-box">
@@ -30,11 +30,15 @@
 </template>
 
 <script>
-import AboutUsCat from '@/components/AboutUsCat'
+import AboutUsSnack from '@/components/AboutUsSnack'
+import AboutUsGym from '@/components/AboutUsGym'
+import AboutUsEvent from '@/components/AboutUsEvent'
 import AboutUsOverview from '@/components/AboutUsOverview'
 export default {
   components: {
-    AboutUsCat,
+    AboutUsSnack,
+    AboutUsGym,
+    AboutUsEvent,
     AboutUsOverview
   },
   name: 'AboutUs',
@@ -88,12 +92,20 @@ export default {
     init () {
       const contentArr = [
         {
-          title: '公司概况',
+          title: '概况',
           bg: 'aboutUs/aboutUsOverviewBg.jpg'
         },
         {
-          title: '另一些"同事"',
-          bg: 'aboutUs/aboutUsCatBg.jpg'
+          title: '各色活动',
+          bg: 'aboutUs/aboutUsEventBg.jpg'
+        },
+        {
+          title: '健身房',
+          bg: 'aboutUs/aboutUsGymBg.jpg'
+        },
+        {
+          title: '暖心夜宵',
+          bg: 'aboutUs/aboutUsSnackBg.jpg'
         }
       ]
       this.contentArr = contentArr
@@ -166,7 +178,7 @@ export default {
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      filter: blur(3px) brightness(90%);
+      //filter: blur(3px) brightness(90%);
     }
   }
   .bg-nodes-box {
@@ -196,6 +208,7 @@ export default {
         .bg-node-inactivated {
           width: 12px;
           height: 12px;
+          border: 2px solid rgba(64, 64, 64, 0.5);
           background-color: #cccccc;
         }
         .bg-node-activated {
@@ -210,14 +223,17 @@ export default {
         }
       }
       .text-inactivated {
-        font-size: 24px;
+        font-size: 22px;
         color: rgba(204, 204, 204, 1);
+        text-shadow: 0 0 4px black;
+        font-weight: bold;
         cursor: pointer;
       }
       .text-activated {
         font-size: 28px;
         color: rgba(0, 122, 196, 1);
-        font-weight: bold;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+        font-weight: bolder;
         //text-shadow: 2px 2px 5px rgba(196, 196, 196, 0.4);
       }
     }

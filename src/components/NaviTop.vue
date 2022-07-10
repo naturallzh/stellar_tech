@@ -3,8 +3,8 @@
     <div class="left-box" @click="gotoPath('/home')">
       <div class="logo"></div>
       <div class="title-box">
-        <div class="title-1">星碑科技</div>
-        <div class="title-2">Stellar Tech</div>
+        <div class="title-1">HW</div>
+        <div class="title-2">HW</div>
       </div>
     </div>
     <div
@@ -22,8 +22,8 @@ export default {
   data () {
     return {
       routerParam: [
-        { path: '/home', title: '首页' },
-        { path: '/exhibition', title: '作品展示' },
+        { path: '/home', title: '园区掠影' },
+        { path: '/requirements', title: '岗位需求' },
         { path: '/aboutUs', title: '关于我们' },
         { path: '/contactUs', title: '联系我们' }
       ]
@@ -81,7 +81,7 @@ export default {
   }
   .navi-button-inactivated {
     color: rgba(148, 148, 148, 1);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.2s, color 0.2s;
   }
   .left-box {
     position: absolute;
@@ -93,7 +93,8 @@ export default {
     .logo {
       height: 40px;
       width: 40px;
-      background-image: url("~@/../public/logo/logo-white.png");
+      margin-right: 5px;
+      background-image: url("~@/../public/logo/logo.png");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;

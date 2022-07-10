@@ -4,8 +4,7 @@
       <div class="info-box">
         <div class="logo-box">
           <div class="logo"></div>
-          <div class="title-1">星碑科技</div>
-          <div class="title-2">Stellar Tech</div>
+          <div class="title-1">HW</div>
         </div>
         <div class="text-box">
           <div class="title">
@@ -13,7 +12,10 @@
           </div>
           <div class="white-line"></div>
           <div class="desc">
-            武汉星碑科技有限公司是一个专注游戏美术设计的团队。公司核心成员均有多年的国内顶尖游戏公司美术、研发、外包及管理经验，参与了多款知名项目，包括 《海神》、《神曲》、《神将三国》、《众社之神》、《奇迹》、《仙语》、《大主室》、《丧戶之战》、《列王的纷争》、《坦克2》等页游、手游及端游项目。在游戏领域有丰富的美术制作经验和成功案例。
+            华为创立于1987年，是全球领先的ICT（信息与通信）基础设施和智能终端提供商。目前华为约有19.5万员工，业务遍及170多个国家和地区，服务全球30多亿人口。
+          </div>
+          <div class="desc">
+            更多描述...
           </div>
         </div>
       </div>
@@ -67,21 +69,16 @@ export default {
       .logo {
         width: 280px;
         height: 280px;
-        background-image: url("~@/../public/logo/logo-white.png");
+        background-image: url("~@/../public/logo/logo.png");
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
       }
-      .title-1, .title-2 {
+      .title-1 {
         font-weight: bold;
         width: 280px;
         text-align: center;
-      }
-      .title-1 {
         font-size: 60px;
-      }
-      .title-2 {
-        font-size: 42px;
       }
     }
     .text-box {

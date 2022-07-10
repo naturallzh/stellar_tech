@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Exhibition from '../views/Exhibition.vue'
+import Requirements from '../views/Requirements.vue'
 import AboutUs from '../views/AboutUs.vue'
 import ContactUs from '../views/ContactUs.vue'
 
@@ -15,9 +15,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/exhibition',
-    name: 'Exhibition',
-    component: Exhibition
+    path: '/requirements',
+    name: 'Requirements',
+    component: Requirements
   },
   {
     path: '/aboutUs',
